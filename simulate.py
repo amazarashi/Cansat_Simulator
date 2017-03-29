@@ -116,9 +116,6 @@ class Simulator(object):
         newPoint = [ cx + self.moveNorm*vx, cy + self.moveNorm*vy ]
         return newPoint
 
-    def executeGo(self,rotation):
-        return
-
     def goalCheck(self,currentPoint):
         goalPoint = self.goalPoint
         gx,gy = goalPoint
@@ -166,9 +163,6 @@ class Simulator(object):
 
         rotate_time = self.wheelCicle_for_round*(angle/360)
         return (rotate_time,rotate_way)
-
-    def executeRotate(self):
-        return
 
     def run(self):
         currentPoint = self.startPoint
