@@ -40,19 +40,23 @@ class GPIO(object):
         if rotate_way == "Right":
             status = True
             while status:
-                self.GPIO.output(PIN2, True)
-                self.GPIO.output(PIN3, True)
+                GPIO = self.GPIO
+                GPIO.output(PIN2, True)
+                GPIO.output(PIN3, True)
                 time.sleep(time)
                 status = False
+            GPIO = self.GPIO
             GPIO.output(PIN2, False)
             GPIO.output(PIN3, False)
         else:
             status = True
             while status:
-                self.GPIO.output(PIN1, True)
-                self.GPIO.output(PIN4, True)
+                GPIO = self.GPIO
+                GPIO.output(PIN1, True)
+                GPIO.output(PIN4, True)
                 time.sleep(rotate_time)
                 status = False
-            self.GPIO.output(PIN1, False)
-            self.GPIO.output(PIN4, False)
+            GPIO = self.GPIO
+            GPIO.output(PIN1, False)
+            GPIO.output(PIN4, False)
         return
