@@ -140,8 +140,8 @@ class Simulator(object):
     def inner_angle(self,v,w):
        cosx = self.dot_product(v,w)/(self.length(v)*self.length(w))
        print("cosx:",cosx)
-       cosx = 1 if cosx > 1
-       cosx = 0 if cosx < 0
+       cosx = 1 if cosx > 1 else cosx
+       cosx = 0 if cosx < 0 else cosx
        rad = acos(cosx) # in radians
        return rad*180/pi # returns degrees
 

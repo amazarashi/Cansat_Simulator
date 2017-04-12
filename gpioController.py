@@ -27,6 +27,7 @@ class GPIO(object):
         return GPIO
 
     def GoStraight(self,go_time):
+        go_time = 0 if go_time < 0 else go_time
         status = True
         while status:
             self.GPIO.output(self.pin1, True)
@@ -38,7 +39,7 @@ class GPIO(object):
         return
 
     def TurnAround(self,rotate_time,rotate_way):
-        rotate_time = 0 if rotate_time < 0
+        rotate_time = 0 if rotate_time < 0 else rotate_time
         print(rotate_time)
         if rotate_way == "Right":
             status = True
