@@ -10,7 +10,7 @@ import math
 from datetime import datetime
 import random
 
-# import gpioController
+import gpioController
 
 class Simulator(object):
 
@@ -43,62 +43,62 @@ class Simulator(object):
         #startPoint = (0,0)
         return (goalPoint,startPoint,startVector)
 
-    # def updateFigure(self,currentPoint):
-    #     plt.figure()
-    #     goalX,goalY = self.goalPoint
-    #     currentX,currentY = currentPoint
-    #     # points
-    #     X = goalX,currentX
-    #     Y = goalY,currentY
-    #     # vector
-    #     U = 0,0
-    #     V = 0,0
-    #
-    #     plt.quiver(X,Y,U,V,angles='xy',scale_units='xy',scale=1)
-    #     plt.xlim([0,self.maxAxisX])
-    #     plt.ylim([0,self.maxAxisY])
-    #     plt.grid()
-    #     plt.draw()
-    #     plt.savefig(self.figure_path)
-    #     return
+    def updateFigure(self,currentPoint):
+        plt.figure()
+        goalX,goalY = self.goalPoint
+        currentX,currentY = currentPoint
+        # points
+        X = goalX,currentX
+        Y = goalY,currentY
+        # vector
+        U = 0,0
+        V = 0,0
 
-    # def debugFigure(self):
-    #     X = [x[0] for x in self.points]
-    #     Y = [y[1] for y in self.points]
-    #     print("#### DEBUG FIGURE####")
-    #     print(X)
-    #     print(Y)
-    #     plt.clf()
-    #     plt.plot(X, Y, 'o',markersize=10)
-    #     goalX,goalY = self.goalPoint
-    #     plt.plot(goalX,goalY, 'o',label='train')
-    #     plt.xlim([0,self.maxAxisX])
-    #     plt.ylim([0,self.maxAxisY])
-    #     plt.legend()
-    #     plt.draw()
-    #     plt.savefig(self.debug_path)
-    #
-    # def debugFigureWithVector(self):
-    #     X = [x[0] for x in self.points]
-    #     Y = [y[1] for y in self.points]
-    #     U = np.array([u[0] for u in self.vectors]) * self.moveNorm
-    #     V = np.array([v[1] for v in self.vectors]) * self.moveNorm
-    #
-    #     plt.figure()
-    #
-    #     # 矢印（ベクトル）
-    #     plt.quiver(X,Y,U,V,angles='xy',scale_units='xy',scale=1)
-    #
-    #     # グラフ表示
-    #     plt.xlim([0,self.maxAxisX])
-    #     plt.ylim([0,self.maxAxisY])
-    #     goalX,goalY = self.goalPoint
-    #     plt.plot(goalX,goalY, 'o',label='GOAL')
-    #     startX,startY = self.startPoint
-    #     plt.plot(startX,startY, 'o',label='START')
-    #     plt.grid()
-    #     plt.draw()
-    #     plt.savefig(self.debug_vector_path)
+        plt.quiver(X,Y,U,V,angles='xy',scale_units='xy',scale=1)
+        plt.xlim([0,self.maxAxisX])
+        plt.ylim([0,self.maxAxisY])
+        plt.grid()
+        plt.draw()
+        plt.savefig(self.figure_path)
+        return
+
+    def debugFigure(self):
+        X = [x[0] for x in self.points]
+        Y = [y[1] for y in self.points]
+        print("#### DEBUG FIGURE####")
+        print(X)
+        print(Y)
+        plt.clf()
+        plt.plot(X, Y, 'o',markersize=10)
+        goalX,goalY = self.goalPoint
+        plt.plot(goalX,goalY, 'o',label='train')
+        plt.xlim([0,self.maxAxisX])
+        plt.ylim([0,self.maxAxisY])
+        plt.legend()
+        plt.draw()
+        plt.savefig(self.debug_path)
+
+    def debugFigureWithVector(self):
+        X = [x[0] for x in self.points]
+        Y = [y[1] for y in self.points]
+        U = np.array([u[0] for u in self.vectors]) * self.moveNorm
+        V = np.array([v[1] for v in self.vectors]) * self.moveNorm
+
+        plt.figure()
+
+        # 矢印（ベクトル）
+        plt.quiver(X,Y,U,V,angles='xy',scale_units='xy',scale=1)
+
+        # グラフ表示
+        plt.xlim([0,self.maxAxisX])
+        plt.ylim([0,self.maxAxisY])
+        goalX,goalY = self.goalPoint
+        plt.plot(goalX,goalY, 'o',label='GOAL')
+        startX,startY = self.startPoint
+        plt.plot(startX,startY, 'o',label='START')
+        plt.grid()
+        plt.draw()
+        plt.savefig(self.debug_vector_path)
 
     def calcVector(self,currentPoint,currentVector):
         goalPoint = self.goalPoint
@@ -194,12 +194,12 @@ class Simulator(object):
             if goalCheck:
                 print("GOAL!!")
                 self.goal = True
-                #self.debugFigure()
-                #self.debugFigureWithVector()
+                self.debugFigure()
+                self.debugFigureWithVector()
             i += 1
             if i > 18:
                 print("OverTime,,,")
-                #self.debugFigure()
-                #self.debugFigureWithVector()
+                self.debugFigure()
+                self.debugFigureWithVector()
                 self.goal = True
         return
