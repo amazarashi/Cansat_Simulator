@@ -124,7 +124,8 @@ class Simulator(object):
         distance = [gx - cx, gy - cy]
         norm = math.sqrt(distance[0] ** 2 + distance[1] ** 2)
         status = False
-        if norm < self.moveNorm*0.1:
+        print("distance to Goal:",norm)
+        if norm < self.moveNorm*0.5:
             status = True
         return status
 
