@@ -38,6 +38,7 @@ class GPIO(object):
         return
 
     def TurnAround(self,rotate_time,rotate_way):
+        print(rotate_time)
         if rotate_way == "Right":
             status = True
             while status:
