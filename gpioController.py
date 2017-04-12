@@ -26,12 +26,12 @@ class GPIO(object):
         GPIO.setup(self.pin4, GPIO.OUT)
         return GPIO
 
-    def GoStraight(self,time):
+    def GoStraight(self,go_time):
         status = True
         while status:
             self.GPIO.output(self.pin1, True)
             self.GPIO.output(self.pin3, True)
-            time.sleep(time)
+            time.sleep(go_time)
             status = False
         self.GPIO.output(self.pin1, False)
         self.GPIO.output(self.pin3, False)
@@ -44,7 +44,7 @@ class GPIO(object):
                 GPIO = self.GPIO
                 GPIO.output(self.pin2, True)
                 GPIO.output(self.pin3, True)
-                time.sleep(time)
+                time.sleep(rotate_time)
                 status = False
             GPIO = self.GPIO
             GPIO.output(self.pin2, False)
