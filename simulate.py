@@ -208,5 +208,5 @@ class Simulator(object):
                 #self.debugFigure()
                 #self.debugFigureWithVector()
                 self.goal = True
-            time.sleep(3)
+            time.sleep(1)
         return
