@@ -15,15 +15,15 @@ class GPIO(object):
         self.pin2 = 12 #p5
         self.pin3 = 15 #p3
         self.pin4 = 13 #p4
-        #self.initGPIO()
-        self.GPIO = GPIO
+        self.GPIO = self.initGPIO()
 
-    # def initGPIO(self):
-    #     GPIO.setmode(GPIO.BOARD)
-    #     GPIO.setup(self.pin1, GPIO.OUT)
-    #     GPIO.setup(self.pin2, GPIO.OUT)
-    #     GPIO.setup(self.pin3, GPIO.OUT)
-    #     GPIO.setup(self.pin4, GPIO.OUT)
+    def initGPIO(self):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self.pin1, GPIO.OUT)
+        GPIO.setup(self.pin2, GPIO.OUT)
+        GPIO.setup(self.pin3, GPIO.OUT)
+        GPIO.setup(self.pin4, GPIO.OUT)
+        return GPIO
 
     def GoStraight(self,time):
         status = True
