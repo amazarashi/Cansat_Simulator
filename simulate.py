@@ -138,6 +138,7 @@ class Simulator(object):
 
     def inner_angle(self,v,w):
        cosx = self.dot_product(v,w)/(self.length(v)*self.length(w))
+       print("cosx:",cosx)
        rad = acos(cosx) # in radians
        return rad*180/pi # returns degrees
 
@@ -176,18 +177,19 @@ class Simulator(object):
         while self.goal == False:
             print("moving_{0}...".format(i))
             # CHECK GOING VECTOR
-            print(currentVector)
+            print("currentVec:",currentVector)
             vector = self.calcVector(currentPoint,currentVector)
             #ROTATE SELF DEPENDING ON VECTOR
             rotate_time,rotate_way = self.rotate(vector,currentVector)
             self.gpioHandle.TurnAround(rotate_time,rotate_way)
             currentVector = vector
-            print(currentVector)
+            print("modifiedVec:",currentVector)
             #GO STRAIGHT
             currentPoint = self.moveToNewPoint(currentPoint,currentVector)
             self.gpioHandle.GoStraight(self.GoStraightTime)
             self.points.append(currentPoint)
             self.vectors.append(currentVector)
+            print("currentPoint:",currentPoint)
             #CHECK CURRENT AND GOAL POINT
             goalCheck = self.goalCheck(currentPoint)
             #self.updateFigure(currentPoint)
@@ -202,4 +204,5 @@ class Simulator(object):
                 #self.debugFigure()
                 #self.debugFigureWithVector()
                 self.goal = True
+            time.sleep(3)
         return
