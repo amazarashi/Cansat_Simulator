@@ -12,11 +12,11 @@ class GPIO(object):
         self.GPIO = GPIO
 
     def initGPIO(self):
-        self.GPIO.setmode(GPIO.BOARD)
-        self.GPIO.setup(self.pin1, GPIO.OUT)
-        self.GPIO.setup(self.pin2, GPIO.OUT)
-        self.GPIO.setup(self.pin3, GPIO.OUT)
-        self.GPIO.setup(self.pin4, GPIO.OUT)
+        self.GPIO.setmode(self.GPIO.BOARD)
+        self.GPIO.setup(self.pin1, self.GPIO.OUT)
+        self.GPIO.setup(self.pin2, self.GPIO.OUT)
+        self.GPIO.setup(self.pin3, self.GPIO.OUT)
+        self.GPIO.setup(self.pin4, self.GPIO.OUT)
 
     def GoStraight(self,time):
         status = True
