@@ -1,5 +1,13 @@
-# import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
+GPIO.setup(15, GPIO.OUT)
+GPIO.setup(13, GPIO.OUT)
+
+
 class GPIO(object):
 
     def __init__(self):
@@ -7,26 +15,24 @@ class GPIO(object):
         self.pin2 = 12 #p5
         self.pin3 = 15 #p3
         self.pin4 = 13 #p4
-        self.initGPIO()
-        import RPi.GPIO as GPIO
-        self.GPIO = GPIO
+        #self.initGPIO()
 
-    def initGPIO(self):
-        self.GPIO.setmode(self.GPIO.BOARD)
-        self.GPIO.setup(self.pin1, self.GPIO.OUT)
-        self.GPIO.setup(self.pin2, self.GPIO.OUT)
-        self.GPIO.setup(self.pin3, self.GPIO.OUT)
-        self.GPIO.setup(self.pin4, self.GPIO.OUT)
+    # def initGPIO(self):
+    #     GPIO.setmode(GPIO.BOARD)
+    #     GPIO.setup(self.pin1, GPIO.OUT)
+    #     GPIO.setup(self.pin2, GPIO.OUT)
+    #     GPIO.setup(self.pin3, GPIO.OUT)
+    #     GPIO.setup(self.pin4, GPIO.OUT)
 
     def GoStraight(self,time):
         status = True
         while status:
-            self.GPIO.output(PIN1, True)
-            self.GPIO.output(PIN3, True)
+            GPIO.output(PIN1, True)
+            GPIO.output(PIN3, True)
             time.sleep(time)
             status = False
-        self.GPIO.output(PIN1, False)
-        self.GPIO.output(PIN3, False)
+        GPIO.output(PIN1, False)
+        GPIO.output(PIN3, False)
         return
 
     def TurnAround(self,rotate_time,rotate_way):
@@ -37,8 +43,8 @@ class GPIO(object):
                 GPIO.output(PIN3, True)
                 time.sleep(time)
                 status = False
-            self.GPIO.output(PIN2, False)
-            self.GPIO.output(PIN3, False)
+            GPIO.output(PIN2, False)
+            GPIO.output(PIN3, False)
         else:
             status = True
             while status:
@@ -46,6 +52,6 @@ class GPIO(object):
                 GPIO.output(PIN4, True)
                 time.sleep(rotate_time)
                 status = False
-            self.GPIO.output(PIN1, False)
-            self.GPIO.output(PIN4, False)
+            GPIO.output(PIN1, False)
+            GPIO.output(PIN4, False)
         return
