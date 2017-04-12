@@ -18,6 +18,7 @@ class GPIO(object):
         self.GPIO = self.initGPIO()
 
     def initGPIO(self):
+        import RPi.GPIO as GPIO
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.pin1, GPIO.OUT)
         GPIO.setup(self.pin2, GPIO.OUT)
