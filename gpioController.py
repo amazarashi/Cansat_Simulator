@@ -30,11 +30,11 @@ class GPIO(object):
         status = True
         while status:
             self.GPIO.output(self.pin1, True)
-            self.GPIO.output(self.pin4, True)
+            self.GPIO.output(self.pin3, True)
             time.sleep(time)
             status = False
         self.GPIO.output(self.pin1, False)
-        self.GPIO.output(self.pin4, False)
+        self.GPIO.output(self.pin3, False)
         return
 
     def TurnAround(self,rotate_time,rotate_way):
@@ -53,11 +53,11 @@ class GPIO(object):
             status = True
             while status:
                 GPIO = self.GPIO
-                GPIO.output(PIN1, True)
-                GPIO.output(PIN4, True)
+                GPIO.output(self.pin1, True)
+                GPIO.output(self.pin4, True)
                 time.sleep(rotate_time)
                 status = False
             GPIO = self.GPIO
-            GPIO.output(PIN1, False)
-            GPIO.output(PIN4, False)
+            GPIO.output(self.pin1, False)
+            GPIO.output(self.pin4, False)
         return
