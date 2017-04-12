@@ -38,6 +38,7 @@ class GPIO(object):
         return
 
     def TurnAround(self,rotate_time,rotate_way):
+        rotate_time = 0 if rotate_time < 0
         print(rotate_time)
         if rotate_way == "Right":
             status = True
@@ -62,3 +63,11 @@ class GPIO(object):
             GPIO.output(self.pin1, False)
             GPIO.output(self.pin4, False)
         return
+
+    def ClearGPIO(self):
+        GPIO = self.GPIO
+        GPIO.output(self.pin1, False)
+        GPIO.output(self.pin2, True)
+        GPIO.output(self.pin3, True)
+        GPIO.output(self.pin4, True)
+        GPIO.cleanup()

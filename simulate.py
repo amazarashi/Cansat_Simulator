@@ -140,6 +140,8 @@ class Simulator(object):
     def inner_angle(self,v,w):
        cosx = self.dot_product(v,w)/(self.length(v)*self.length(w))
        print("cosx:",cosx)
+       cosx = 1 if cosx > 1
+       cosx = 0 if cosx < 0
        rad = acos(cosx) # in radians
        return rad*180/pi # returns degrees
 
@@ -197,6 +199,7 @@ class Simulator(object):
             if goalCheck:
                 print("GOAL!!")
                 self.goal = True
+                self.gpioHandle.ClearGPIO()
                 #self.debugFigure()
                 #self.debugFigureWithVector()
             i += 1
