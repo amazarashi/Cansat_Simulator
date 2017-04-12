@@ -16,6 +16,7 @@ class GPIO(object):
         self.pin3 = 15 #p3
         self.pin4 = 13 #p4
         #self.initGPIO()
+        self.GPIO = GPIO
 
     # def initGPIO(self):
     #     GPIO.setmode(GPIO.BOARD)
@@ -27,20 +28,20 @@ class GPIO(object):
     def GoStraight(self,time):
         status = True
         while status:
-            GPIO.output(PIN1, True)
-            GPIO.output(PIN3, True)
+            self.GPIO.output(PIN1, True)
+            self.GPIO.output(PIN3, True)
             time.sleep(time)
             status = False
-        GPIO.output(PIN1, False)
-        GPIO.output(PIN3, False)
+        self.GPIO.output(PIN1, False)
+        self.GPIO.output(PIN3, False)
         return
 
     def TurnAround(self,rotate_time,rotate_way):
         if rotate_way == "Right":
             status = True
             while status:
-                GPIO.output(PIN2, True)
-                GPIO.output(PIN3, True)
+                self.GPIO.output(PIN2, True)
+                self.GPIO.output(PIN3, True)
                 time.sleep(time)
                 status = False
             GPIO.output(PIN2, False)
@@ -48,10 +49,10 @@ class GPIO(object):
         else:
             status = True
             while status:
-                GPIO.output(PIN1, True)
-                GPIO.output(PIN4, True)
+                self.GPIO.output(PIN1, True)
+                self.GPIO.output(PIN4, True)
                 time.sleep(rotate_time)
                 status = False
-            GPIO.output(PIN1, False)
-            GPIO.output(PIN4, False)
+            self.GPIO.output(PIN1, False)
+            self.GPIO.output(PIN4, False)
         return
